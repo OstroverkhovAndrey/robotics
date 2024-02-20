@@ -37,10 +37,12 @@ Matrix::Matrix(const std::vector<std::vector<float>> other) :
 }
 
 Matrix::~Matrix() {
-    //for (int i = 0; i < N_; ++i) {
-    //    delete[] matrix_[i];
-    //}
-    //delete[] matrix_;
+    if (matrix_ == nullptr) return;
+    for (int i = 0; i < N_; ++i) {
+        if (matrix_[i] == nullptr) continue;
+        delete[] matrix_[i];
+    }
+    delete[] matrix_;
 }
 
 void Matrix::SetElement(int i, int j, float val) {
@@ -139,10 +141,14 @@ Matrix Matrix::operator=(const Matrix& other) {
     if (this == &other) {
         return *this;
     }
-    //for (int i = 0; i < N_; ++i) {
-    //    delete[] matrix_[i];
-    //}
-    //delete[] matrix_;
+    if (matrix_ != nullptr) {
+        for (int i = 0; i < N_; ++i) {
+            if (matrix_[i] != nullptr) {
+                delete[] matrix_[i];
+            }
+        }
+        delete[] matrix_;
+    }
     N_ = other.N_;
     M_ = other.M_;
     matrix_ = new float*[N_];

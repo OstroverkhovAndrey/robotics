@@ -1,7 +1,7 @@
 
 #include <iostream>
 
-#include "visualization/kalman_filter_visualization.hpp"
+#include "visualization/visualization_opencv.hpp"
 
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
@@ -59,7 +59,7 @@ bool KalmanFilterVisualization::draw () {
     return true;
 }
 
-bool KalmanFilterVisualization::drawNoramlDistribution(NormalDistribution& distribution, int color_num) {
+bool KalmanFilterVisualization::drawNormalDistribution(NormalDistribution& distribution, int color_num) {
     if (color_num < 0 || color_num > 2) {
         color_num = 2;
     }
@@ -92,7 +92,7 @@ char KalmanFilterVisualization::key() {
     return (char)cv::pollKey();
 }
 
-bool KalmanFilterVisualization::drawRandomPoint(Matrix point) {
+bool KalmanFilterVisualization::drawRandomPoint(const Matrix& point) {
     int x = point.GetElement(0, 0), y = point.GetElement(1, 0);
     int d = 5;
     for (int i = x-d; i < x+d; ++i) {

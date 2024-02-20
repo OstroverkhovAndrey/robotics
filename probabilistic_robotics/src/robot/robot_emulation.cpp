@@ -1,18 +1,19 @@
 
 #include <iostream>
+#include <any>
 
 #include "robot/robot_emulation.hpp"
 #include "base/constants/constants.hpp"
 #include "base/random_variable/normal_distribution.hpp"
 
 RobotEmulation::RobotEmulation() {
-    Constants c;
-    robot_state_ = c.x_0;
-    F = c.F;
-    B = c.B;
-    Q = c.Q;
-    R = c.R;
-    H = c.H;
+    auto c = Constants::GetConstants();
+    robot_state_ = std::any_cast<Matrix>(c["x_0"]);
+    F = std::any_cast<Matrix>(c["F"]);
+    B = std::any_cast<Matrix>(c["B"]);
+    Q = std::any_cast<Matrix>(c["Q"]);
+    R = std::any_cast<Matrix>(c["R"]);
+    H = std::any_cast<Matrix>(c["H"]);
 }
 
 bool RobotEmulation::move(Matrix u) {

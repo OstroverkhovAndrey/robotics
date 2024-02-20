@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <vector>
 
-#include "visualization/kalman_filter_visualization.hpp"
+#include "visualization/visualization_opencv.hpp"
 #include "base/random_variable/normal_distribution.hpp"
 #include "base/math/matrix.hpp"
 #include "base/constants/constants.hpp"
@@ -15,9 +15,9 @@
 
 #include "kalman_filter/kalman_filter.hpp"
 
-int main () {
+int main (int argc, char *argv[]) {
     int i = 0;
-    Constants c;
+    auto c = Constants::GetConstants(argv[1]);
     std::shared_ptr<Robot> robot = std::make_shared<RobotEmulation>();
     std::shared_ptr<Regulator> reg = std::make_shared<Regulator>();
 
@@ -27,16 +27,16 @@ int main () {
     KalmanFilterVisualization visualization(1280, 720);
     visualization.drawRandomPoint(robot->get_real_state());
 
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < 9; ++i)
     {
-        Matrix u = reg->get_u(i*c.d_t);
+        Matrix u = reg->get_u(i*std::any_cast<float>(c["d_t"]));
         robot->move(u);
         Matrix sensor_m = robot->get_sensor_measurement();
         std::vector<NormalDistribution> v_nd = filter->move_and_measurement(u, sensor_m);
-        visualization.drawNoramlDistribution(v_nd[0], 1);
-        visualization.drawNoramlDistribution(v_nd[1], 2);
-        visualization.drawNoramlDistribution(v_nd[2], 0);
-        visualization.drawNoramlDistribution(v_nd[3], 1);
+        visualization.drawNormalDistribution(v_nd[0], 1);
+        visualization.drawNormalDistribution(v_nd[1], 2);
+        visualization.drawNormalDistribution(v_nd[2], 0);
+        visualization.drawNormalDistribution(v_nd[3], 1);
         visualization.drawRandomPoint(robot->get_real_state());
     }
 

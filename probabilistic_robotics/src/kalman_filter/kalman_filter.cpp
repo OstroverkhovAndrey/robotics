@@ -5,15 +5,15 @@
 #include <iostream>
 
 KalmanFilter::KalmanFilter() : estimate_robot_state(0) {
-    Constants c;
-    F = c.F;
-    B = c.B;
-    Q = c.Q;
-    H = c.H;
-    R = c.R;
-    NormalDistribution nd(2);
-    nd.SetMean(c.x_0);
-    nd.SetCovariance(c.P_0);
+    auto c = Constants::GetConstants();
+    F = std::any_cast<Matrix>(c["F"]);
+    B = std::any_cast<Matrix>(c["B"]);
+    Q = std::any_cast<Matrix>(c["Q"]);
+    H = std::any_cast<Matrix>(c["H"]);
+    R = std::any_cast<Matrix>(c["R"]);
+    NormalDistribution nd(std::any_cast<int>(c["dimension"]));
+    nd.SetMean(std::any_cast<Matrix>(c["x_0"]));
+    nd.SetCovariance(std::any_cast<Matrix>(c["P_0"]));
     estimate_robot_state = nd;
 }
 

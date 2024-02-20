@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <ostream>
+#include <any>
 
 class Matrix{
     friend std::ostream& operator<<(std::ostream& os, const Matrix& m);
@@ -38,7 +39,7 @@ public:
 private:
     int N_;
     int M_;
-    float **matrix_;
+    float **matrix_ = nullptr;
 };
 
 #endif // _MATRIX_HPP_
