@@ -16,21 +16,23 @@ using std::placeholders::_1;
 
 class DetectAruco : public rclcpp::Node {
 public:
-    DetectAruco() : Node("detect_aruco")
-        ,dictionary_(cv::aruco::getPredefinedDictionary(10)) // dictId == 10
-    {
+    DetectAruco() : Node("detect_aruco") {
         subscription_ = this->create_subscription<sensor_msgs::msg::Image>(
                 "image_with_undetect_markers", 10, std::bind(
                 &DetectAruco::topic_callback, this, _1));
     }
 private:
     void topic_callback(const sensor_msgs::msg::Image & msg) const {
+	RCLCPP_INFO(this->get_logger(), "I get image!");
+
         cv::Mat image = cv_bridge::toCvCopy(msg, "bgr8")->image;
 
         std::vector<int> ids;
         std::vector<std::vector<cv::Point2f>> corners;
 
-        cv::aruco::detectMarkers(image, &dictionary_, corners, ids);
+	cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
+
+        cv::aruco::detectMarkers(image, dictionary, corners, ids);
 
         std::cout << "markers ids\n";
         for (auto & id : ids) {
@@ -38,7 +40,6 @@ private:
         }std::cout << "\n\n";
     }
     rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr subscription_;
-    cv::aruco::Dictionary dictionary_;
 };
 
 int main(int argc, char * argv[]) {

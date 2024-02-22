@@ -24,8 +24,14 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+#include_directories( ${OpenCV_INCLUDE_DIRS} )
 add_executable(image_publisher src/image_publisher.cpp)
 add_executable(detect_aruco src/detect_aruco.cpp)
+
+#target_link_libraries(image_publisher ${OpenCV_LIBS} )
+#target_link_libraries(detect_aruco ${OpenCV_LIBS} )
+#target_link_directories(image_publisher /usr/lib/x86_64-linux-gnu/ )
+#target_link_directories(detect_aruco /usr/lib/x86_64-linux-gnu/ )
 
 ament_target_dependencies(image_publisher rclcpp cv_bridge sensor_msgs OpenCV)
 ament_target_dependencies(detect_aruco rclcpp cv_bridge sensor_msgs OpenCV)
