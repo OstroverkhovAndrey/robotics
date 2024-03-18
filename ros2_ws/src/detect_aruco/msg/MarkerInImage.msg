@@ -1,0 +1,5 @@
+int8 marker_id
+PointInImage down_left
+PointInImage up_left
+PointInImage up_right
+PointInImage down_right
