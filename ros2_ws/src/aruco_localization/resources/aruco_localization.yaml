@@ -1,0 +1,191 @@
+/aruco_localization:
+  ros__parameters:
+    coord_block_0_marker_0:
+    - 1.0
+    - 16.0
+    - 0.0
+    - 8.0
+    - 16.0
+    - 0.0
+    - 8.0
+    - 9.0
+    - 0.0
+    - 1.0
+    - 9.0
+    - 0.0
+    coord_block_0_marker_1:
+    - 1.0
+    - 8.0
+    - 0.0
+    - 8.0
+    - 8.0
+    - 0.0
+    - 8.0
+    - 1.0
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    coord_block_1_marker_0:
+    - 1.0
+    - 16.0
+    - 0.0
+    - 8.0
+    - 16.0
+    - 0.0
+    - 8.0
+    - 9.0
+    - 0.0
+    - 1.0
+    - 9.0
+    - 0.0
+    coord_block_1_marker_1:
+    - 1.0
+    - 8.0
+    - 0.0
+    - 8.0
+    - 8.0
+    - 0.0
+    - 8.0
+    - 1.0
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    coord_block_2_marker_0:
+    - 1.0
+    - 16.0
+    - 0.0
+    - 8.0
+    - 16.0
+    - 0.0
+    - 8.0
+    - 9.0
+    - 0.0
+    - 1.0
+    - 9.0
+    - 0.0
+    coord_block_2_marker_1:
+    - 1.0
+    - 8.0
+    - 0.0
+    - 8.0
+    - 8.0
+    - 0.0
+    - 8.0
+    - 1.0
+    - 0.0
+    - 1.0
+    - 1.0
+    - 0.0
+    coord_world_marker_0:
+    - 0.00
+    - 0.00
+    - 0.0
+    - 7.00
+    - 0.00
+    - 0.0
+    - 7.00
+    - -7.00
+    - 0.0
+    - 0.00
+    - -7.00
+    - 0.0
+    coord_world_marker_1:
+    - 129.12
+    - 0.00
+    - 0.0
+    - 136.12
+    - 0.00
+    - 0.0
+    - 136.12
+    - -7.00
+    - 0.0
+    - 129.12
+    - -7.00
+    - 0.0
+    coord_world_marker_2:
+    - 14.59
+    - 134.41
+    - 0.0
+    - 21.59
+    - 134.41
+    - 0.0
+    - 21.59
+    - 127.41
+    - 0.0
+    - 14.59
+    - 127.41
+    - 0.0
+    coord_world_marker_3:
+    - 113.35
+    - 95.94
+    - 0.0
+    - 120.35
+    - 95.94
+    - 0.0
+    - 120.35
+    - 88.94
+    - 0.0
+    - 113.35
+    - 88.94
+    - 0.0
+    coord_world_marker_4:
+    - 143.32
+    - 134.19
+    - 0.0
+    - 150.32
+    - 134.19
+    - 0.0
+    - 150.32
+    - 127.19
+    - 0.0
+    - 143.32
+    - 127.19
+    - 0.0
+    coord_world_marker_5:
+    - 114.68
+    - 191.81
+    - 0.0
+    - 121.68
+    - 191.81
+    - 0.0
+    - 121.68
+    - 184.81
+    - 0.0
+    - 114.68
+    - 184.81
+    - 0.0
+    count_block: 3
+    count_block_0_marker: 2
+    count_block_1_marker: 2
+    count_block_2_marker: 2
+    count_world_marker: 6
+    id_block_0_marker_0: 0
+    id_block_0_marker_1: 1
+    id_block_1_marker_0: 2
+    id_block_1_marker_1: 3
+    id_block_2_marker_0: 4
+    id_block_2_marker_1: 5
+    id_world_marker_0: 200
+    id_world_marker_1: 201
+    id_world_marker_2: 202
+    id_world_marker_3: 203
+    id_world_marker_4: 204
+    id_world_marker_5: 205
+    qos_overrides:
+      /parameter_events:
+        publisher:
+          depth: 1000
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+      /tf:
+        publisher:
+          depth: 100
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+    use_sim_time: false
+    world_name: world
+

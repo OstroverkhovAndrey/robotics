@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot name="block_red">
+  <material name="red">
+    <color rgba="0.8 0 0 1"/>
+  </material>
+  <link name="block_2">
+    <visual>
+      <geometry>
+        <box size="0.1 0.3 0.15"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.05 0.15 -0.075"/>
+      <material name="red"/>
+    </visual>
+  </link>
+</robot>

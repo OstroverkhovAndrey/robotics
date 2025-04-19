@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot name="world">
+    <material name="gray">
+    <color rgba="0.8 0.8 0.8 1"/>
+  </material>
+  <link name="world">
+    <visual>
+      <geometry>
+        <box size="4 4 0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="2 2 -0.05"/>
+      <material name="gray"/>
+    </visual>
+  </link>
+</robot>
